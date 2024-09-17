@@ -1,21 +1,26 @@
 <?php
 
-$heading = "Create Note";
 
-$config = require('config.php');
+require "Validator.php";
+
+
+$heading = "Create Note";
+$config = require "config.php";
 $db = new Database($config['database']);
 
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $validator = new Validator();
+
     $errors = [];
-    if(strlen($_POST['body']) == 0){
-        $errors['body'] = "Please enter a note.";
+
+
+
+    if(!$validator->string($_POST['body'], 1, 1000)){
+        $errors['body'] = "Your not should be within 1000 characters!";
     }
 
-    if(strlen($_POST['body']) > 1000){
-        $errors['body'] = "The note is too long.";
-    }
-
-    if(empty($errors['body'])){
+    if(empty($errors)){
         $db->query("INSERT INTO notes(body, user_id) VALUES(:body, :user_id)", ['body' => $_POST['body'],
             'user_id' => 1] );
     }
