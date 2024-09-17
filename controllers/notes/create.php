@@ -11,10 +11,8 @@ $db = new Database($config['database']);
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $errors = [];
 
-
-
     if(! Validator::string($_POST['body'], 1, 1000)){
-        $errors['body'] = "Your not should be within 1000 characters!";
+        $errors['body'] = "Your note should be within 1000 characters!";
     }
 
     if(empty($errors)){
@@ -24,5 +22,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 }
 
-require "views/note-create.view.php";
+require "views/notes/create.view.php";
 

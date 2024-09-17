@@ -1,8 +1,8 @@
-<?php require("partials/head.php") ?>
+<?php require(__DIR__."/../partials/head.php") ?>
 
-<?php require("partials/nav.php") ?>
+<?php require(__DIR__."/../partials/nav.php") ?>
 
-<?php require("partials/banner.php") ?>
+<?php require(__DIR__."/../partials/banner.php") ?>
 
 
     <main>
@@ -40,4 +40,4 @@
         </div>
     </main>
 
-<?php require("partials/footer.php") ?>
+<?php require(__DIR__."/../partials/footer.php") ?>

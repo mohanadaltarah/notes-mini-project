@@ -9,4 +9,4 @@ $heading = "My Notes";
 $notes = $db->query("SELECT * FROM notes")->getAll();
 
 
-require "views/notes.view.php";
+require "views/notes/index.view.php";
