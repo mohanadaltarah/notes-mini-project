@@ -11,6 +11,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $errors['body'] = "Please enter a note.";
     }
 
+    if(strlen($_POST['body']) > 1000){
+        $errors['body'] = "The note is too long.";
+    }
+
     if(empty($errors['body'])){
         $db->query("INSERT INTO notes(body, user_id) VALUES(:body, :user_id)", ['body' => $_POST['body'],
             'user_id' => 1] );
