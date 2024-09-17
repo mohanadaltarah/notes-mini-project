@@ -8,15 +8,12 @@ $heading = "Create Note";
 $config = require "config.php";
 $db = new Database($config['database']);
 
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $validator = new Validator();
-
     $errors = [];
 
 
 
-    if(!$validator->string($_POST['body'], 1, 1000)){
+    if(! Validator::string($_POST['body'], 1, 1000)){
         $errors['body'] = "Your not should be within 1000 characters!";
     }
 
