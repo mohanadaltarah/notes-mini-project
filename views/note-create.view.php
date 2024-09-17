@@ -8,7 +8,7 @@
     <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
-            <form action="/notes" method="POST">
+            <form action="/notes/create" method="POST">
                 <div class="space-y-12">
                     <div class="border-b border-gray-900/10 pb-12">
                             <div class="col-span-full">
