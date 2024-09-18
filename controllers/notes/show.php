@@ -6,7 +6,7 @@ use Core\Database;
 $config = require base_path('config.php');
 $db = new Database($config['database']);
 
-$currentUser = 2;
+$currentUser = 1;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
