@@ -1,5 +1,7 @@
 <?php
 
+use Core\Response;
+
 function urlis($value){
     return $_SERVER["REQUEST_URI"] == $value;
 }
