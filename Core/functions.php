@@ -36,5 +36,5 @@ function base_path($path){
 
 function view($path, $attributes=[]){
     extract($attributes);
-    return require base_path('views/'. $path);
+    require base_path('views/'. $path);
 }
