@@ -2,6 +2,11 @@
 
 namespace Core;
 
+use Core\Middleware\Auth;
+use Core\Middleware\Guest;
+use Core\Middleware\Middleware;
+
+
 class Router{
     protected $routes = [];
 
@@ -43,20 +48,9 @@ class Router{
     public function route($uri, $method){
         foreach ($this->routes as $route){
             if ($route['uri'] == $uri && $route['method'] == strtoupper($method)){
-                if($route['middleware'] == "guest"){
-                    if(isset($_SESSION['user'])){
-                        header("location: /");
-                        exit();
-                    }
-                }
+               Middleware::resolve($route['middleware']);
 
-                if($route['middleware'] == "auth"){
-                    if(! ($_SESSION['user'] ?? false)){
-                        header("location: /");
-                        exit();
-                    }
-                }
-                return require base_path($route['controller']);
+               return require base_path($route['controller']);
             }
         }
         $this->abort();
