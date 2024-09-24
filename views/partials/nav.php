@@ -12,7 +12,9 @@
                             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                             <a href="/" class="<?= urlis("/") ? "bg-gray-900 text-white" : "text-gray-300" ?> hover:bg-gray-700 hover:text-white rounded-md  px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
                             <a href="/about" class="<?= urlis("/about") ? "bg-gray-900 text-white" : "text-gray-300" ?> text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
-                            <a href="/notes" class="<?= urlis("/notes") ? "bg-gray-900 text-white" : "text-gray-300" ?> text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Notes</a>
+                            <?php if($_SESSION['user'] ?? false):?>
+                                <a href="/notes" class="<?= urlis("/notes") ? "bg-gray-900 text-white" : "text-gray-300" ?> text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Notes</a>
+                            <?php endif; ?>
                             <a href="/contact" class="<?= urlis("/contact") ? "bg-gray-900 text-white" : "text-gray-300" ?> text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact US</a>
 
                         </div>
@@ -39,9 +41,19 @@
                                 <?php else : ?>
                                     <a href="/register" class="<?= urlis("/register") ? "bg-gray-900 text-white" : "text-gray-300" ?> text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Register</a>
                                     <a href="/login" class="<?= urlis("/login") ? "bg-gray-900 text-white" : "text-gray-300" ?> text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Log In</a>
-
                                 <?php endif; ?>
+                            </div>
                         </div>
+                        <div class="ml-5">
+                            <?php if($_SESSION["user"]?? false) : ?>
+                                <form action="/login" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="text-white">Log out</button>
+                                </form>
+                            <?php endif; ?>
+                        </div>
+
+
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
