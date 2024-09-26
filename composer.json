@@ -1,0 +1,26 @@
+{
+    "name": "drame/php-demo",
+    "authors": [
+        {
+            "name": "mohanadsyria40",
+            "email": "mohanadsyria40@gmal.com"
+        }
+    ],
+    "require": {
+        "illuminate/collections": "^11.24"
+    },
+    "autoload":  {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
